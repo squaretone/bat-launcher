@@ -1,0 +1,19 @@
+{
+  "name": "bat-launcher",
+  "version": "1.0.0",
+  "description": "Launch .BAT files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squaretone/bat-launcher.git"
+  },
+  "author": "Eric Lawrence",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/squaretone/bat-launcher/issues"
+  },
+  "homepage": "https://github.com/squaretone/bat-launcher#readme"
+}

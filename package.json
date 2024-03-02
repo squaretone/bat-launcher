@@ -2,8 +2,9 @@
   "name": "bat-launcher",
   "version": "1.0.0",
   "description": "Launch .BAT files",
-  "main": "index.js",
+  "main": "batLauncher.js",
   "scripts": {
+    "start": "node batLauncher.js ./demo.bat",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

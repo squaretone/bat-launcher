@@ -4,7 +4,8 @@
   "description": "Launch .BAT files",
   "main": "batLauncher.js",
   "scripts": {
-    "start": "node batLauncher.js ./demo.bat",
+    "start": "node batLauncher.js bats/demo.bat",
+    "start-example": "node batLauncher.js /Users/username/Desktop/another.bat",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

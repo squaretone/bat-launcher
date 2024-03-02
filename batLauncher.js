@@ -1,18 +1,29 @@
-const { spawn } = require('node:child_process');
-const { existsSync } = require('node:fs')
+const { spawn, exec } = require('node:child_process');
+const { resolve, dirname, posix } = require('node:path');
+const { existsSync } = require('node:fs');
 
 const getPath = () => {
   const pathToBat = process.argv[2] ?? './demo.bat'
-  const exists = existsSync(pathToBat)
-  if (exists) return pathToBat
-  throw new Error(`Could not locate bat file: ${pathToBat}`)
+  const filePath = resolve(pathToBat)
+  const exists = existsSync(filePath)
+  if (exists) {
+    const directory = dirname(filePath)
+    const fileName = posix.basename(filePath)
+    return { filePath, directory, fileName }
+  }
+
+  const errorMsg = `Bat file "${filePath}" does not exist!`
+  throw new Error(errorMsg)
 }
 
 const init = () => {
-  const batPath = getPath()
-  console.log('launch bat', batPath)
-  // const bat = spawn('cmd.exe', ['/c', 'my.bat']);
-  const bat = spawn('cmd.exe', [batPath]);
+  const { filePath, directory, fileName } = getPath()
+  console.log('launch bat', filePath)
+
+  const bat = spawn('cmd.exe', ['/c', filePath], { 
+    shell: true,
+    cwd: directory
+  });
 
   bat.stdout.on('data', (data) => {
     console.log(data.toString());
